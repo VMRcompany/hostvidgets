@@ -1,0 +1,80 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with identifier",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "createdAt"]
+    },
+    "WidgetSettings": {
+      "title": "WidgetSettings",
+      "description": "Customizable settings of a widget",
+      "type": "object",
+      "properties": {
+        "autoplay": { "type": "boolean" },
+        "loop": { "type": "boolean" },
+        "controls": { "type": "boolean" },
+        "muted": { "type": "boolean" },
+        "accentColor": { "type": "string" },
+        "borderRadius": { "type": "string" },
+        "customTitle": { "type": "string" },
+        "aspectRatio": { "type": "string" },
+        "customWidth": { "type": "string" },
+        "borderStyle": { "type": "string" },
+        "gradientBg": { "type": "string" },
+        "mediaEffect": { "type": "string" }
+      }
+    },
+    "Widget": {
+      "title": "Widget",
+      "description": "Media widget item belonging to a project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "projectId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["video", "image"] },
+        "url": { "type": "string" },
+        "originalName": { "type": "string" },
+        "size": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "settings": { "$ref": "WidgetSettings" }
+      },
+      "required": ["id", "projectId", "name", "type", "url", "originalName", "size", "createdAt", "settings"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "Project item group for widgets",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "name", "description", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Core users list"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Projects managed by users"
+    },
+    "/widgets/{widgetId}": {
+      "schema": "Widget",
+      "description": "Widgets associated with projects"
+    }
+  }
+}

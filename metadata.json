@@ -1,0 +1,6 @@
+{
+  "name": "HostVidgets",
+  "description": "Мини-хостинг виджетов для сайтов. Легко загружайте фото и видео, получайте готовый HTML-код адаптивного плеера или медиа-виджета и встраивайте на любой сайт.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
